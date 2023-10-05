@@ -2,6 +2,7 @@ package com.codeclan.backend.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -29,7 +30,7 @@ public class Customer {
         this.name = name;
         this.town = town;
         this.dateOfBirth = LocalDate.parse(dateOfBirth);
-        this.bookings = bookings;
+        this.bookings = new ArrayList<>();
     }
     public Customer() {
 
