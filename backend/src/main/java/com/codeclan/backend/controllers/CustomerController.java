@@ -24,12 +24,12 @@ public class CustomerController {
         return new ResponseEntity<>(customerRepository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/customers/course_id")
-    private ResponseEntity<List<Customer>> findByCourseId(@RequestParam(name = "course_id", required = false, defaultValue = "0") Long course_id){
-        if (course_id == 0) {
-            return new ResponseEntity<>(customerRepository.findAll(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(customerRepository.findByCourseId(course_id), HttpStatus.OK);
-        }
-    }
+//    @GetMapping(value = "/customers/course_id")
+//    private ResponseEntity<List<Customer>> findByCourseId(@RequestParam(name = "course_id", required = false, defaultValue = "0") Long course_id){
+//        if (course_id == 0) {
+//            return new ResponseEntity<>(customerRepository.findAll(), HttpStatus.OK);
+//        } else {
+//            return new ResponseEntity<>(customerRepository.findByCourseId(course_id), HttpStatus.OK);
+//        }
+//    }
 }
