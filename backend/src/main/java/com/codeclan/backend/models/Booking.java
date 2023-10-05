@@ -7,6 +7,7 @@ import org.w3c.dom.stylesheets.LinkStyle;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -51,6 +52,7 @@ public class Booking {
 
     public Booking(LocalDate date) {
         this.date = date;
+        this.customers = new ArrayList<>();
     }
     public Booking(){
 

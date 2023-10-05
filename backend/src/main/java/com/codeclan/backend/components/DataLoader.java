@@ -10,11 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
 @Profile("!test") //Run every time EXCEPT Tests
-// @Component //comment this out once db has been seeded
+@Component //comment this out once db has been seeded
 public class DataLoader implements ApplicationRunner {
 
     @Autowired
