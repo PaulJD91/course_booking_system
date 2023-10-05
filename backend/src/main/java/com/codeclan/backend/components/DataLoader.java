@@ -10,11 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
 @Profile("!test") //Run every time EXCEPT Tests
-// @Component //comment this out once db has been seeded
+//@Component //comment this out once db has been seeded
 public class DataLoader implements ApplicationRunner {
 
     @Autowired
@@ -46,32 +47,7 @@ public class DataLoader implements ApplicationRunner {
 
         LocalDate courseDate1 =  LocalDate.of(2023,10,5);
         LocalDate courseDate2 =  LocalDate.of(2023,11,14);
-        Booking booking1 = new Booking(courseDate1);
-        bookingRepository.save(booking1);
 
-
-        Booking booking2 = new Booking(courseDate2);
-        bookingRepository.save(booking2);
-
-        Booking booking3 = new Booking(courseDate2);
-        bookingRepository.save(booking3);
-
-        Booking booking4 = new Booking(courseDate2);
-        bookingRepository.save(booking4);
-
-
-        Booking booking5 = new Booking(courseDate1);
-        bookingRepository.save(booking5);
-
-
-        Booking booking6 = new Booking(courseDate1);
-        bookingRepository.save(booking6);
-
-        Booking booking7 = new Booking(courseDate1);
-        bookingRepository.save(booking7);
-
-        Booking booking8 = new Booking(courseDate2);
-        bookingRepository.save(booking8);
 
         LocalDate davesDob =  LocalDate.of(1990,5,3);
         Customer customer1 = new Customer("Dave", "Edinburgh", davesDob);
@@ -89,7 +65,32 @@ public class DataLoader implements ApplicationRunner {
         Customer customer4 = new Customer("Susan", "Glasgow", susanDob);
         customerRepository.save(customer4);
 
+        Booking booking1 = new Booking(courseDate1, customer1, course1);
+        bookingRepository.save(booking1);
 
+
+        Booking booking2 = new Booking(courseDate2, customer2, course2);
+        bookingRepository.save(booking2);
+
+        Booking booking3 = new Booking(courseDate2, customer3, course2);
+        bookingRepository.save(booking3);
+
+        Booking booking4 = new Booking(courseDate2, customer2, course1);
+        bookingRepository.save(booking4);
+
+
+        Booking booking5 = new Booking(courseDate1, customer4, course1);
+        bookingRepository.save(booking5);
+
+
+        Booking booking6 = new Booking(courseDate1, customer4, course2);
+        bookingRepository.save(booking6);
+
+        Booking booking7 = new Booking(courseDate1, customer3, course1);
+        bookingRepository.save(booking7);
+
+        Booking booking8 = new Booking(courseDate2, customer4, course1);
+        bookingRepository.save(booking8);
     }
 }
 

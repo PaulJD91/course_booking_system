@@ -1,14 +1,9 @@
 package com.codeclan.backend.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-import org.w3c.dom.stylesheets.LinkStyle;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "bookings")
@@ -18,39 +13,22 @@ public class Booking {
     private Long id;
     @Column(name = "date")
     private LocalDate date;
+
     @ManyToOne
     @JsonIgnoreProperties({"bookings"})
-    @Cascade(CascadeType.SAVE_UPDATE)
-    @JoinTable(
-            name = "customer_course",
-            joinColumns = {
-                    @JoinColumn(
-                            name = "course_id",
-                            nullable = false,
-                            updatable = false
-                    )
-            },
-            inverseJoinColumns = {
-                    @JoinColumn(
-                            name = "customer_id",
-                            nullable = false,
-                            updatable = false
-                    )
-            }
-    )
-    private List<Customer> customers;
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
 
-    public List<Customer> getCustomers() {
-        return customers;
-    }
-
-    public void setCustomers(List<Customer> customers) {
-        this.customers = customers;
-    }
+    @ManyToOne
+    @JsonIgnoreProperties({"bookings"})
+    @JoinColumn(name = "course_id", nullable = false)
+    private Course course;
 
 
-    public Booking(LocalDate date) {
+    public Booking(LocalDate date, Customer customer, Course course) {
         this.date = date;
+        this.customer = customer;
+        this.course = course;
     }
     public Booking(){
 
@@ -72,4 +50,19 @@ public class Booking {
         this.date = date;
     }
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
 }

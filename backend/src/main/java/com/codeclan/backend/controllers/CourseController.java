@@ -31,12 +31,12 @@ public class CourseController {
         }
     }
 
-    @GetMapping(value = "/courses/customer_id")
-    private ResponseEntity<List<Course>> getCourseByCustomerId(@RequestParam(name = "customer_id", required = false, defaultValue = "0") Long customer_id){
-        if (customer_id == 0) {
-            return new ResponseEntity<>(courseRepository.findAll(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(courseRepository.findByCustomerId(customer_id), HttpStatus.OK);
-        }
-    }
+//    @GetMapping(value = "/courses/customer_id")
+//    private ResponseEntity<List<Course>> getCourseByCustomerId(@RequestParam(name = "customer_id", required = false, defaultValue = "0") Long customer_id){
+//        if (customer_id == 0) {
+//            return new ResponseEntity<>(courseRepository.findAll(), HttpStatus.OK);
+//        } else {
+//            return new ResponseEntity<>(courseRepository.findByCustomerId(customer_id), HttpStatus.OK);
+//        }
+//    }
 }
