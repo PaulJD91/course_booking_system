@@ -26,7 +26,7 @@ public class Customer {
     @JsonIgnoreProperties({"customer"})
     private List<Booking> bookings;
 
-    public Customer(String name, String town, String dateOfBirth, List<Booking> bookings) {
+    public Customer(String name, String town, String dateOfBirth) {
         this.name = name;
         this.town = town;
         this.dateOfBirth = LocalDate.parse(dateOfBirth);
