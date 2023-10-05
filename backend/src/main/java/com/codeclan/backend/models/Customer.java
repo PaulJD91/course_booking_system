@@ -26,10 +26,10 @@ public class Customer {
     @JsonIgnoreProperties({"customer"})
     private List<Booking> bookings;
 
-    public Customer(String name, String town, String dateOfBirth) {
+    public Customer(String name, String town, LocalDate dateOfBirth) {
         this.name = name;
         this.town = town;
-        this.dateOfBirth = LocalDate.parse(dateOfBirth);
+        this.dateOfBirth = dateOfBirth;
         this.bookings = new ArrayList<>();
     }
     public Customer() {
